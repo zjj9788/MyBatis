@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoft.mapper.FlightMapper">
+<select id="findAll" resultType="map">
+       select f.flightnum,f.flydate,f.starttime,f.flytime,c.cityname as startcity, d.cityname as endcity,f.seatnum FROM (flightinfo f INNER JOIN cityinfo d on f.endcity=d.cityid) INNER JOIN cityinfo c on
+f.startcity=c.cityid ;
+    </select>
+</mapper>

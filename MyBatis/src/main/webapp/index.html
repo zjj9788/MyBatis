@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="node_modules/layui-src/dist/css/layui.css"/>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"flightServlet",
+                success:function (result) {
+                    var str="";
+                    $.each(JSON.parse(result),function (index,row,ss) {
+                        str+="<tr><td>"+row.startcity+"</td><td>"+row.endcity+"</td></tr>"
+                    });
+                    $("#tbody").html(str);
+                }
+            })
+        });
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<table class="layui-table">
+    <tr>
+        <td>开始城市</td>
+        <td>结束城市</td>
+    </tr>
+    <tbody id="tbody"></tbody>
+</table>
+</body>
+</html>
